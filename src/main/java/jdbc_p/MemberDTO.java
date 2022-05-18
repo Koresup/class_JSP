@@ -123,4 +123,8 @@ public class MemberDTO {
 		this.reg_date = reg_date;
 	}
 
+	public String getNickName() {
+		return "김강규 만세";
+	}
+	
 }
