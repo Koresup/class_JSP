@@ -30,7 +30,7 @@ public class NoticeDAO {
 		}
 	}
 	
-	public ArrayList<NoticeDTO> list() {
+	public ArrayList<NoticeDTO> selectAll() {
 		ArrayList<NoticeDTO> res = new ArrayList<NoticeDTO>();
 		
 		sql = "SELECT * FROM notice";
@@ -39,15 +39,14 @@ public class NoticeDAO {
 			rs = stmt.executeQuery(sql);
 
 			while(rs.next()) {
-				NoticeDTO noti = new NoticeDTO();
+				NoticeDTO dto = new NoticeDTO();
 				
-				noti.setNo(rs.getInt("no"));
-				noti.setTitle(rs.getString("title"));
-				noti.setName(rs.getString("name"));
-				noti.setDate(rs.getString("date"));
-				noti.setCount(rs.getInt("count"));
+				dto.setNo(rs.getInt("no"));
+				dto.setTitle(rs.getString("title"));
+				dto.setDate(rs.getTimestamp("date"));
+				dto.setView(rs.getInt("view"));
 				
-				res.add(noti);
+				res.add(dto);
 			}
 			
 		} catch (SQLException e) {

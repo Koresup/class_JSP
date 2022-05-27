@@ -100,6 +100,37 @@ public class MemberDAO {
 		return res;
 	}
 	
+	public MemberDTO detail_02 (String name) {
+		MemberDTO res = null;
+		
+		sql = "SELECT * FROM member WHERE pid = ?";
+		
+		System.out.println(sql);
+		try {
+			stmt = con.prepareStatement(sql);
+			stmt.setString(1, name);
+			
+			rs = stmt.executeQuery();
+
+			if(rs.next()) {
+				res = new MemberDTO();
+				
+				res.setPid(rs.getString("pid"));
+				res.setPname(rs.getString("pname"));
+				res.setAge(rs.getInt("age"));
+				res.setMarriage(rs.getInt("marriage"));
+				res.setReg_date(rs.getTimestamp("reg_date"));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		
+		return res;
+	}
+	
 	public void close() {
 		if (rs!=null) try { rs.close(); } catch (SQLException e) {e.printStackTrace();}
 		if (stmt!=null) try { stmt.close(); } catch (SQLException e) {e.printStackTrace();}
@@ -110,14 +141,6 @@ public class MemberDAO {
 	public int insert(MemberDTO dto) {
 		
 		int res = 0;
-//		sql = "INSERT INTO member "
-//				+ "(pid, pname, pw, age, marriage, reg_date) VALUES " 
-//				+ "('"+dto.pid
-//				+"','"+dto.pname
-//				+"','"+dto.pw
-//				+"',"+dto.age
-//				+","+dto.getMarriageInt()
-//				+",SYSDATE())";
 
 		sql = "INSERT INTO member "
 				+ "(pid, pname, pw, age, marriage, reg_date) VALUES"
@@ -134,6 +157,39 @@ public class MemberDAO {
 			stmt.setInt(4, dto.getMarriageInt());
 			
 			
+			res = stmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+		} finally {
+			close();
+		}
+		return res;
+	}
+	
+	
+public int insert_01(MemberDTO dto) {
+		
+		int res = 0;
+
+		sql = "INSERT INTO member "
+				+ "(pid, pname, pw, age, marriage, reg_date, pic, myff) VALUES"
+				+ "(?,?,?,?,?, SYSDATE())";
+				
+		
+		System.out.println(sql);
+		try {
+			stmt = con.prepareStatement(sql);
+			stmt.setString(0, dto.pid);
+			stmt.setString(1, dto.pname);
+			stmt.setString(2, dto.pw);
+			stmt.setInt(3, dto.age);
+			stmt.setInt(4, dto.getMarriageInt());
+			stmt.setString(5, dto.pic);
+			stmt.setString(6, dto.myff);
+
+		
 			res = stmt.executeUpdate();
 			
 		} catch (Exception e) {

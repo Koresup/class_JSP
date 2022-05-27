@@ -5,7 +5,7 @@ import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 
 public class MemberDTO {
-	String pid, pname, pw, tel;
+	String pid, pname, pw, tel, pic, myff;
 	int no, age;
 	boolean marriage;
 	Date reg_date;
@@ -31,6 +31,33 @@ public class MemberDTO {
 		this.pname = pname;
 		this.pw = pw;
 
+	}
+
+	public MemberDTO(String pid, String pname, String pic, String myff, int age, boolean marriage, Date reg_date) {
+		super();
+		this.pid = pid;
+		this.pname = pname;
+		this.pic = pic;
+		this.myff = myff;
+		this.age = age;
+		this.marriage = marriage;
+		this.reg_date = reg_date;
+	}
+
+	public String getPic() {
+		return pic;
+	}
+
+	public void setPic(String pic) {
+		this.pic = pic;
+	}
+
+	public String getMyff() {
+		return myff;
+	}
+
+	public void setMyff(String myff) {
+		this.myff = myff;
 	}
 
 	public String getPw() {
@@ -101,10 +128,12 @@ public class MemberDTO {
 		}
 	}
 
+	
+
 	@Override
 	public String toString() {
-		return "MemberDTO [pid=" + pid + ", pname=" + pname + ", pw=" + pw + ", tel=" + tel + ", no=" + no + ", age="
-				+ age + ", marriage=" + marriage + ", reg_date=" + reg_date + "]";
+		return "MemberDTO [pid=" + pid + ", pname=" + pname + ", pw=" + pw + ", tel=" + tel + ", pic=" + pic + ", myff="
+				+ myff + ", no=" + no + ", age=" + age + ", marriage=" + marriage + ", reg_date=" + reg_date + "]";
 	}
 
 	public int getAge() {

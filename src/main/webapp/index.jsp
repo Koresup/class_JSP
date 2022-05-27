@@ -75,6 +75,25 @@ String pid = URLEncoder.encode("엄마상어", "UTF-8");
 	<a href="jstl/el.jsp?pid=qaz&age=27&marriage=true&tel=1234567">el</a>
 	<a href="jstl/02_exam.jsp?pid=asdf&kor=78&eng=79&mat=72">02_exam</a>
 	<a href="jstl/set_if.jsp">set_if</a>
+	<a href="jstl/foreach.jsp">foreach</a>
+	<a href="jstl/memberList.jsp">memberList</a>
+	<a href="jstl/memberDetail.jsp">memberDetail</a>
+	<a href="jstl/fmt.jsp">fmt</a>
+	<h2>file</h2>
+	<a href="file/uploadForm.jsp">uploadForm</a>
+	<a href="file/joinForm.jsp">joinForm</a>
+	<a href="file/fileDown.jsp">fileDown</a>
+	<a href="file/resume.jsp?fName=<%=URLEncoder.encode("resume.docx", "utf-8") %>">이력서</a>
+	<a href="file/resume.jsp?fName=bg.jpg">배경그림</a>
+	<a href="file/resume.jsp?fName=BigBuck.mp4">영상</a>
+	
+	<h2><a href="board/List">게시판</a></h2>
+	
+
+	
+	
+	
+	
 	
 </body>
 </html>

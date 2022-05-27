@@ -1,24 +1,23 @@
 package jdbc_p;
 
+import java.util.Date;
+
 public class NoticeDTO {
-	
-	int no, count;
-	String title, name;
-	String date;
-	
+
+	int no, view;
+	String title;
+	Date date;
+
 	public NoticeDTO() {
-	
 	}
 
-	public NoticeDTO(int no, String title, String name, String date, int count) {
+	public NoticeDTO(int no, int view, String title, Date date) {
 		this.no = no;
+		this.view = view;
 		this.title = title;
-		this.name = name;
 		this.date = date;
-		this.count = count;		
 	}
-	
-	
+
 	public int getNo() {
 		return no;
 	}
@@ -27,12 +26,12 @@ public class NoticeDTO {
 		this.no = no;
 	}
 
-	public int getCount() {
-		return count;
+	public int getView() {
+		return view;
 	}
 
-	public void setCount(int count) {
-		this.count = count;
+	public void setView(int view) {
+		this.view = view;
 	}
 
 	public String getTitle() {
@@ -43,31 +42,16 @@ public class NoticeDTO {
 		this.title = title;
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getDate() {
+	public Date getDate() {
 		return date;
 	}
 
-	public void setDate(String date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 
 	@Override
 	public String toString() {
-		return "NoticeDTO [no=" + no + ", count=" + count + ", title=" + title + ", name=" + name + ", date=" + date
-				+ "]";
+		return "NoticeDTO [no=" + no + ", review=" + view + ", title=" + title + ", date=" + date + "]";
 	}
-	
-	
-	
-	
-	
 }
-	
