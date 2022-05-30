@@ -37,11 +37,19 @@ public class F_Controller extends HttpServlet {
 		// TODO Auto-generated method stub
 //		response.getWriter().append("Served at: ").append(request.getContextPath()); //화면 출력 : getWriter (out역할)
 		
-		System.out.println(request.getRequestURI());
-		System.out.println(request.getContextPath());
+//		System.out.println(request.getRequestURI());
+//		System.out.println(request.getContextPath());
 		String serviceStr = request.getRequestURI().substring(
 				(request.getContextPath() + "/board/").length()
 				);
+		
+		int page = 1;
+		if(request.getParameter("page") != null) {
+			page = Integer.parseInt(request.getParameter("page"));
+		}
+		
+		request.setAttribute("nowPage", page);
+
 //		System.out.println(serviceStr);
 		
 		
@@ -65,18 +73,17 @@ public class F_Controller extends HttpServlet {
 		
 		
 		
-		
-		System.out.println("doget() 왔다감");
+		if (!serviceStr.equals("FileDown")) {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/bbb_view/template.jsp");
 		
 		dispatcher.forward(request, response);
+		}
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

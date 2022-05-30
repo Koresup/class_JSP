@@ -30,13 +30,34 @@ public class BoardDAO {
 		}
 	}
 
-	public ArrayList<BoardDTO> list() {
-		ArrayList<BoardDTO> res = new ArrayList<BoardDTO>();
+	
+	public int totalCnt() {
 		
-		sql = "select * from board";
+		sql = "select count(*) from board";
 		
 		try {
 			ptmt = con.prepareStatement(sql);
+			rs = ptmt.executeQuery(); // 여기에 sql ㄴㄴ
+		
+			rs.next();
+				
+			return rs.getInt(1);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}		
+		return 0;
+	}
+	
+	public ArrayList<BoardDTO> list(int start, int limit) {
+		ArrayList<BoardDTO> res = new ArrayList<BoardDTO>();
+		
+		sql = "select * from board order by id desc limit ?, ?"; // 뒤는 번호를 받아와야함
+		
+		try {
+			ptmt = con.prepareStatement(sql);
+			ptmt.setInt(1, start);
+			ptmt.setInt(2, limit);
 			
 			rs = ptmt.executeQuery(); // 여기에 sql ㄴㄴ
 		

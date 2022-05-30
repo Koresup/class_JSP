@@ -29,7 +29,7 @@
 		</tr>
 		<tr>
 			<td colspan="2" align="center">
-				<a href="<c:url value="/board/List"/>">목록으로</a>
+				<a href="<c:url value="/board/List?page=${nowPage }"/>">목록으로</a>
 				<input type="reset" value="취소" />
 				<input type="submit" value="작성" />
 			</td>

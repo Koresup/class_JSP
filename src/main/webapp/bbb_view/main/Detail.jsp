@@ -27,20 +27,29 @@
 		<td>조회수</td><td>${dto.cnt }</td>
 	</tr>
 	<tr>
-		<td>내용</td><td>${dto.content }</td>
+		<td>내용</td><td>${dto.contentBr }</td>
 	</tr>
 	<tr>
-		<td>파일</td><td>${dto.upfile }</td>
+		<c:if test="${dto.upfile != null }">
+		<td>파일</td><td>
+			<c:choose>
+				<c:when test="${dto.img }">
+					<img src="<c:url value="/bbb_fff/${dto.upfile }"/>" alt="" />
+				</c:when>
+				<c:otherwise>
+					<a href="<c:url value="/board/FileDown?fname=${dto.upfile }"/>"> ${dto.upfile }</a>
+				</c:otherwise>
+			</c:choose>
+		</td>
+		
+		</c:if>
 	</tr>
 	<tr>
 		<td colspan="2" align="right">
-			<a href="<c:url value="/board/List"/>">목록으로</a>
+			<a href="<c:url value="/board/List?page=${nowPage }"/>">목록으로</a>
 			<a href="<c:url value="/board/ModifyForm?id=${dto.id }"/>">수정</a>
 			<a href="<c:url value="/board/DeleteForm?id=${dto.id }"/>">삭제</a>
 		</td>
 	</tr>
 	
-		
-		
-	</tr>
 </table>
